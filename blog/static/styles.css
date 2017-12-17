@@ -1,0 +1,33 @@
+.appearingTextCreator {
+  display: none;
+}
+
+tr {
+  display: visible;
+  font-family: 'Kalam', cursive !important;
+  font-size: 100%;
+}
+
+.createList {
+  font-size: 14px;
+}
+
+.removeGoals {
+  font-size: 14px;
+}
+
+.toggleGoals {
+  font-size: 14px;
+}
+
+.inputSquare {
+  display: none;
+}
+/*
+.outputSquare {
+  display: none;
+}
+*/
+h1 {
+  font-size: 20px;
+}

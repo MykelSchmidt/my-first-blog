@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head;
+    any other head content must come *after* these tags -->
+  <title>Lifegoal App by Mykel Schmidt</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+  <!-- Main CSS -->
+  <link href="styles.css" rel=" stylesheet ">
+</head>
+
+<body>
+  <section id="header ">
+    <!-- NAV-BAR -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+          <a class="navbar-brand">Lifegoal App </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a><span class="appearingTextCreator">by Mykel Schmidt!</span></a></li>
+            <li><a href="#" class="createList"><img class="createListImage" src="images\plus2.png" width="20x">
+              <span class="appearingText text-succes">Add new goal</span></a></li>
+            <li><a href="#" class="removeGoals"><img class="removeGoalsImage" src="images\cross2.png" width="21x">
+              <span class="appearingText text-danger">Delete all goals</span></a></li>
+            <li><a href="#" class="toggleGoals"><img class="toggleGoalsImage" src="images\tasklist.png" width="22x">
+                <span class="appearingText text-primary">Toggle</span></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+
+    <!-- MAIN CONTENT -->
+
+    <!-- NON-RECURRING WELCOME JUMBOTRON -->
+    <div class="jumbotron container">
+      <h1>Get started! <small>Be the first to:</small></h1>
+      <p class="container">
+        <ul class="list-group">
+          <li class="list-group-item "> Create new goals</li>
+          <li class="list-group-item "> Mark goals as finished</li>
+          <li class="list-group-item ">Remove goals</li>
+          <li class="list-group-item "> Hide/show your goal list</li>
+        </ul>
+        <h2>Use the navigation bar above to get started!</h2>
+      </p>
+    </div>
+
+    <!-- INPUT -->
+    <div class="inputSquare">
+      <div class="input-group container">
+        <span class="input-group-btn">
+        <button id="userInputButton" class="btn btn-default btn-primary" type="button">Add goal</button>
+      </span>
+        <input id="userInput" name="goal" type="text" class="form-control" placeholder="Goal name">
+      </div>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="outputSquare">
+      <div class="container ">
+        <h1 class="page-header ">Current lifegoals </h1>
+        <table id="outputTable" class="table">
+          <!-- Here will my goals be added by rows -->
+        </table>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js "></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js " integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=" anonymous "></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
