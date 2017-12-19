@@ -1,24 +1,35 @@
 $(document).ready(() => {
 
   /* outputSquare Hover */
-  $('.col-md-8').on('mouseenter', () => {
-    $('.col-md-8').animate({
-      'opacity': '0.66'
+  $(document).on('mouseenter', '.singlepost', event => {
+    $(event.currentTarget).closest('.singlepost').animate({
+      'opacity': '1'
     }, 100);
   })
-  $('.col-md-8').on('mouseleave', () => {
-    $('.col-md-8').animate({
-      'opacity': '0.33'
+  $(document).on('mouseleave', '.singlepost', event => {
+    $(event.currentTarget).closest('.singlepost').animate({
+      'opacity': '0.70'
     }, 100);
   })
+
+  /* outputSquare Hover
+  $('.col-md-12').on('mouseenter', () => {
+    $('.col-md-12').animate({
+      'opacity': '0.80'
+    }, 100);
+  })
+  $('.col-md-12').on('mouseleave', () => {
+    $('.col-md-12').animate({
+      'opacity': '0.65'
+    }, 100);
+  }) */
 
 
   /* NAV BAR SCRIPTS */
   /* PLUS */
   /* Add goal function */
   $('.createList').on('click', () => {
-    $('.jumbotron').hide();
-    $('.outputSquare').fadeToggle(200, "swing");
+    /*$('.outputSquare').fadeToggle(200, "swing");*/
   })
   /* Animated Nav Link */
   $('.createList').on('mouseenter', () => {
