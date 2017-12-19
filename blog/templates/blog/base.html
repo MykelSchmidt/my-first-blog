@@ -27,12 +27,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a><span class="appearingTextCreator">by Mykel Schmidt!</span></a></li>
+            <li><a href="#" class="toggleGoals"><img class="toggleGoalsImage" src="{% static 'images\tasklist3.png' %}" width="22x">
+                <span class="text-primary">View</span></a></li>
             <li><a href="{% url 'post_new' %}" class="createList"><img class="createListImage" src="{% static 'images\plus2.png' %}" width="20x">
               <span class="text-succes">Add new goal</span></a></li>
             <li><a href="#" class="removeGoals"><img class="removeGoalsImage" src="{% static 'images\cross2.png' %}" width="21x">
               <span class="text-danger">Delete all goals</span></a></li>
-            <li><a href="#" class="toggleGoals"><img class="toggleGoalsImage" src="{% static 'images\tasklist.png' %}" width="22x">
-                <span class="text-primary">View goals</span></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">About</a></li>
