@@ -1,6 +1,11 @@
 $(document).ready(() => {
 
   /* outputSquare Hover */
+  jQuery(document).ready(function($) {
+    $('.outputSquare').slideDown(3000, "swing");
+  })
+
+  /* outputSquare Hover */
   $(document).on('mouseenter', '.singlepost', event => {
     $(event.currentTarget).closest('.singlepost').animate({
       'opacity': '1'
@@ -11,19 +16,6 @@ $(document).ready(() => {
       'opacity': '0.70'
     }, 100);
   })
-
-  /* outputSquare Hover
-  $('.col-md-12').on('mouseenter', () => {
-    $('.col-md-12').animate({
-      'opacity': '0.80'
-    }, 100);
-  })
-  $('.col-md-12').on('mouseleave', () => {
-    $('.col-md-12').animate({
-      'opacity': '0.65'
-    }, 100);
-  }) */
-
 
   /* NAV BAR SCRIPTS */
   /* PLUS */
@@ -121,6 +113,7 @@ $(document).ready(() => {
     $('#outputTable').append('<tr><td>' + new Date().toLocaleDateString() + '</td><td>' +
       (goal) + '</td><td><div class="btn-toolbar" role="toolbar"><button id="buttonFinished" class="btn-group btn-group-sm btn-success" role="group" type="button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button><button id="buttonRemove" class="btn-group btn-group-sm btn-danger" role="group" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div></td></tr>');
   })
+
   /* Enter key-functionality */
   $('#userInput').keypress(function(e) {
     if (e.which == 13) { //Enter key pressed
