@@ -11,7 +11,7 @@
 <body>
   <section id="header ">
     <!-- NAV-BAR -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -32,7 +32,7 @@
             <li><a href="#" class="removeGoals"><img class="removeGoalsImage" src="{% static 'images\cross2.png' %}" width="21x">
               <span class="text-danger">Delete all goals</span></a></li>
             <li><a href="#" class="toggleGoals"><img class="toggleGoalsImage" src="{% static 'images\tasklist.png' %}" width="22x">
-                <span class="text-primary">Toggle</span></a></li>
+                <span class="text-primary">View goals</span></a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">About</a></li>
@@ -44,21 +44,32 @@
       <!-- /.container-fluid -->
     </nav>
 
-    <!-- INPUT -->
-    <div class="inputSquare">
-      <div class="input-group container">
-        <span class="input-group-btn">
-        <button id="userInputButton" class="btn btn-default btn-primary" type="button">Add goal</button>
-      </span>
-        <input id="userInput" name="goal" type="text" class="form-control" placeholder="Goal name">
-      </div>
-    </div>
+    <!-- MAIN CONTENT -->
+
+    <div class="main-bg"></div>
+
+    <!-- NON-RECURRING WELCOME JUMBOTRON
+    <div class="jumbotron container">
+      <h1>Get started! <small>Share your goals with the world!</small></h1>
+      <p class="container">
+        <ul class="list-group">
+          <li class="list-group-item "> Create new goals</li>
+          <li class="list-group-item "> Read the goals of other people</li>
+          <li class="list-group-item ">Remove goals</li>
+          <li class="list-group-item "> Hide/show your goal list</li>
+        </ul>
+        <h2>Use the navigation bar above to get started!</h2>
+      </p>
+    </div> -->
+
+    <!--<img class="image-fluid" style="max-height: 100%; top: 0; position: absolute; z-index: -1;" src="{% static 'images\background.jpg' %}">-->
 
     <!-- OUTPUT -->
     <div class="outputSquare">
-      <div class="container ">
+      <div class="container">
 
-        <table id="outputTable" class="table">
+        <div id="outputTable" class="table">
+          <br><br>
           <!-- Here will my goals be added by rows -->
 
           <div class="col-md-8">
@@ -66,7 +77,7 @@
           </div>
 
           <!-- --->
-        </table>
+        </div>
       </div>
     </div>
 

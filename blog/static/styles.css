@@ -1,3 +1,18 @@
+.navbar{
+}
+
+.main-bg {
+    background: url("background.jpg") no-repeat center center scroll;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    /*background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover; */
+}
+
 .appearingTextCreator {
   display: none;
 }
@@ -20,14 +35,16 @@ tr {
   font-size: 14px;
 }
 
-.inputSquare {
-  display: none;
-}
-/*
 .outputSquare {
-  display: none;
+  background-color: ;
+  opacity: ;
 }
-*/
+
+.col-md-8 {
+  background-color: white;
+  opacity: 0.33;
+}
+
 h1 {
   font-size: 20px;
 }
