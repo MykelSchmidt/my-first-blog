@@ -2,7 +2,7 @@ $(document).ready(() => {
 
   /* outputSquare Hover */
   jQuery(document).ready(function($) {
-    $('.outputSquare').slideDown(3000, "swing");
+    $('.outputSquare').slideDown(2000, "swing");
   })
 
   /* outputSquare Hover */
