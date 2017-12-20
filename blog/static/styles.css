@@ -35,8 +35,7 @@
 
 tr {
   display: visible;
-  font-family: 'Kalam', cursive !important;
-  font-size: 100%;
+  font-size: 14px;
 }
 
 .createList {
