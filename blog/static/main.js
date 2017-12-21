@@ -5,10 +5,6 @@ $(document).ready(() => {
     $('.outputSquare').slideDown(2000, "swing");
   })
 
-  jQuery(document).ready(function($) {
-    $('.jumbotron').fadeOut(20000, "swing");
-  })
-
   /* outputSquare Hover */
   $(document).on('mouseenter', '.singlepost', event => {
     $(event.currentTarget).closest('.singlepost').animate({
