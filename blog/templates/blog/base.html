@@ -33,22 +33,22 @@
           <ul class="nav navbar-nav">
             <li><a><span class="appearingTextCreator">click to view Homepage!</span></a></li>
             <li><a href="#" class="toggleGoals"><img class="toggleGoalsImage" src="{% static 'images\tasklist3.png' %}" width="22x">
-                <span class="text-primary">View background</span></a></li>
+                <span class="text-primary">Toggle background</span></a></li>
                 {% if user.is_authenticated %}
-            <li><a href="{% url 'post_new' %}" class="createList"><img class="createListImage" src="{% static 'images\plus2.png' %}" width="20x">
-              <span class="text-succes">Add new goal</span></a></li>
+            <li><a href="{% url 'post_new' %}" class="createList"><img class="createListImage" src="{% static 'images\plus2.png' %} " width="20x">
+              <span class="text-success">Create post</span></a></li>
               {% endif %}
             <!--<li><a href="#" class="removeGoals"><img class="removeGoalsImage" src="{% static 'images\cross2.png' %}" width="21x">
               <span class="text-danger">Delete all goals</span></a></li>-->
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                <li class="top-menu">Hello {{ user.username }}<small>(<a href="{% url 'logout' %}">Log out</a>)</small></li>
+                <!--<li class="top-menu">Hello {{ user.username }}<small>(<a href="{% url 'logout' %}">Log out</a>)</small></li>-->
+                <li class="top-menu"><a href="{% url 'logout' %}"><span class="text-danger">Log out</span></a></li>
             {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login' %}"><span class="">Login</span></a></li>
             {% endif %}
             <!--<li><a href="#">About</a></li>-->
-
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -61,7 +61,6 @@
 
     <div class="main-bg"></div>
 
-    <!-- NON-RECURRING WELCOME JUMBOTRON
     <div class="jumbotron container">
       <h1>Get started! <small>Share your goals with the world!</small></h1>
       <p class="container">
@@ -73,7 +72,7 @@
         </ul>
         <h2>Use the navigation bar above to get started!</h2>
       </p>
-    </div>-->
+    </div>
 
     <!-- OUTPUT -->
     <div class="outputSquare">
@@ -86,6 +85,7 @@
           <div class="col-md-12">
             <br>
             {% block content %} {% endblock %}
+            <br>
           </div>
 
         </div>
