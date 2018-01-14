@@ -4,20 +4,17 @@
   opacity: 0.7;
 }
 
-.col-md-12 {
-  background-color: white ;
-  opacity: 0.7;
-}
-
 .page-header{
   text-align: center;
 }
 .navbar{
+  font-family: "Roboto";
+  font-size: 15px;
   margin-bottom: 0;
 }
 
 .appearingTextCreator {
-  font-weight: ;
+  font-size: 15px;
   display: none;
 }
 
@@ -26,30 +23,24 @@ tr {
   font-size: 14px;
 }
 
-.createList {
-  font-size: 14px;
-}
-
-.removeGoals {
-  font-size: 14px;
-}
-
-.toggleGoals {
-  font-size: 14px;
-}
-
 .outputSquare {
   display: none;
 }
 
+#signoff{
+  text-align: right;
+  font-size: 12px;
+}
 
 h1 {
-  font-size: 20px;
+  font-family: "Roboto";
+  font-weight: ;
+  font-size: 25px;
 }
 
 /* credit for background goes to one of my previous peer reviews, for making the image act appropriately i used his/her code */
 .main-bg {
-    background: url("background.jpg") no-repeat center center scroll;
+    background: url("background (1).jpg") no-repeat center center scroll;
     position: fixed;
     height: 100%;
     width: 100%;
