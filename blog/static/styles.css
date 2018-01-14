@@ -28,6 +28,7 @@ tr {
 }
 
 #signoff{
+  font-style: italic;
   text-align: right;
   font-size: 12px;
 }
@@ -37,6 +38,7 @@ h1 {
   font-weight: ;
   font-size: 25px;
 }
+
 
 /* credit for background goes to one of my previous peer reviews, for making the image act appropriately i used his/her code */
 .main-bg {
@@ -51,3 +53,7 @@ h1 {
     -o-background-size: cover;
 }
 /* end credit */
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}

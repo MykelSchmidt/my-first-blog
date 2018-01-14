@@ -2,7 +2,7 @@ $(document).ready(() => {
 
   /* outputSquare Hover */
   jQuery(document).ready(function($) {
-    $('.outputSquare').fadeIn(600, "swing");
+    $('.outputSquare').fadeIn(1000, "swing");
   })
 
   /* outputSquare Hover */
@@ -37,8 +37,8 @@ $(document).ready(() => {
 
   /* CROSS */
   /* Remove goal function */
-  $('.removeGoals').on('click', function(e) {
-    if (confirm("Are you sure about deleting ALL goals?")) {
+  $('#removePost').on('click', function(e) {
+    if (confirm("Are you sure about DELETING your post?")) {
       $('#outputTable').children().remove()
     } else {
       e.preventDefault();
@@ -121,10 +121,6 @@ $(document).ready(() => {
     }
   });
 
-  /* buttonRemove (Trashcan-icon) */
-  $(document).on('click', '#buttonRemove', event => {
-    $(event.currentTarget).parent().parent().parent().fadeOut(600, "swing");
-  })
 
   /* buttonFinished (Checkmark-icon) */
   $(document).on('click', '#buttonFinished', event => {

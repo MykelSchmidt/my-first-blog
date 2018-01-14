@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Create your comment <small> // let them know your opinion</small></h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-success">Post this comment.</button>
+    </form>
+    <form action="\">
+      <input type="submit" class="btn btn-danger" value="Nevermind. Go back." />
+    </form>
+{% endblock %}

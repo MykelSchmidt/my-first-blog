@@ -14,7 +14,7 @@
     <p>{{ post.text|linebreaksbr|truncatewords:75 }}<a href="{% url 'post_detail' pk=post.pk %}"><small> view post</small></a></p>
     <div id='signoff' class="date">
       {{ post.published_date }}
-      by <a><b>{{ post.author }}</b></a><br>
+      by <a id="viewuser"><b>{{ post.author }}</b></a><br>
       <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
     </div>
 
