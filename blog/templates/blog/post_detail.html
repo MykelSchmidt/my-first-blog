@@ -38,7 +38,7 @@
     </div>
     <hr>
 {% empty %}
-    <p><a>Be the first to leave a comment!</a></p>
+    <p><a href="{% url 'add_comment_to_post' pk=post.pk %}">Be the first to leave a comment!</a></p>
 {% endfor %}
 
 
