@@ -1,5 +1,9 @@
 {% extends 'blog/base.html' %} {% block content %}
 <br>
+<form action="\">
+<input type="submit" class="btn btn-default" value="Go back" />
+</form>
+<br>
 
 {% if post.image %}
   <img src='{{post.image.url}}' class='img-responsive'/>
@@ -23,12 +27,21 @@
   <form action="\">
     <a class="btn btn-primary" href="{% url 'add_comment_to_post' pk=post.pk %}">Comment <span class=""></span></a>
     <a class="btn btn-success" href="">I love it! <span class="glyphicon glyphicon-heart"></span></a>
-    <input type="submit" class="btn btn-warning" value="Go back" />
     <!-- DELETE POST IF ITS YOUR OWN -->
     {% if user.is_authenticated and user == post.author %}
+    <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}">Edit</a>
     <a id="removePost" class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}">Delete post<!--span class="glyphicon glyphicon-remove"></span>--></a>
     {% endif %}
   </form>
+Share on:
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">
+    Facebook,
+    </a>
+    <a href='https://plus.google.com/share?url={{request.build_absolute_uri}}'>
+    Google</a> or
+
+    <a href="http://www.reddit.com/submit?url={{request.build_absolute_uri}}/&title={{post.title}}">
+    Reddit! </a>
 
 </div>
 

@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^post/(?P<pk>\d+)/comment/$', views.add_comment_to_post, name='add_comment_to_post'),
     url(r'^createaccount/$', views.create_account, name='create_account'),
     url(r'^profile/$', views.view_profile, name='view_profile'),
+    url(r'^post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
+
 
 ]
 
