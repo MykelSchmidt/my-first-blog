@@ -33,8 +33,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a><span class="appearingTextCreator">click to view Homepage!</span></a></li>
-            <li><a href="#" class="toggleGoals"><img class="toggleGoalsImage" src="{% static 'images\tasklist3.png' %}" height="20px">
-                <span class="text-primary">Toggle background</span></a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'post_new' %}" class="createList"><img class="createListImage" src="{% static 'images\plus2.png' %} " height="19px">
               <span class="text-success">Create post</span></a></li>
@@ -54,7 +52,7 @@
             <li><a href="/posts">API</a></li>
             {% if user.is_authenticated %}
             <!--<li class="top-menu">Hello {{ user.username }}<small>(<a href="{% url 'logout' %}">Log out</a>)</small></li>-->
-            <li class="top-menu"><a href="{% url 'logout' %}"><span class="text-danger">Log out</span></a></li>
+            <li class="top-menu"><a href="{% url 'logout' %}"><span class="text-danger">Log out</span> <small>({{ user.username }})</small></a></a></li>
             {% else %}
             <li><a href="{% url 'login' %}"><span class="">Login</span></a></li>
             {% endif %}

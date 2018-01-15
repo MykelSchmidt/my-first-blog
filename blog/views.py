@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import PostSerializer
-from .forms import PostForm, CommentForm, UserForm
+from .forms import PostForm, CommentForm, UserForm, LikeForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
@@ -18,10 +18,7 @@ def view_profile(request):
     try:
         query = request.GET.get("q")
         print(query+"cookies")
-        num = request.user.id
-        print(num)
-
-        posts = Post.objects.filter(author=num)
+        posts = Post.objects.filter(author=query)
         print(query+"cookies")
     except Exception as e:
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
@@ -78,6 +75,22 @@ def add_comment_to_post(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+def add_like_to_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = LikeForm(request.POST)
+        if form.is_valid():
+            like = form.save(commit=False)
+            like.post = post
+            like.save()
+            return True
+            #return redirect('post_detail', pk=post.pk)
+            #return render(request, 'blog/post_detail.html', {'post': post})
+    else:
+        form = CommentForm()
+    return True
+    #return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
 def create_account(request):
     if request.method == "POST":

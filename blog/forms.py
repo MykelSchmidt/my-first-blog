@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import Post, Comment
+from .models import Post, Comment, Like
 
 class PostForm(forms.ModelForm):
 
@@ -15,6 +15,12 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('author', 'text',)
+
+class LikeForm(forms.ModelForm):
+
+    class Meta:
+        model = Like
+        fields = ('author',)
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)

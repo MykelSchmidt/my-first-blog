@@ -4,7 +4,7 @@
   {% if user.is_authenticated %}
   <h1 class="page-header hoverHeader"> Hey <span class="text-warning">{{ user.username }}</span>, start sharing with the world!</h1>
   {% else %}
-  <h1 class="page-header hoverHeader">Check out these stories from people around the world! </h1>
+  <h1 class="page-header hoverHeader">Check out these stories from people around the world!</h1>
   {% endif %}
 
    {% for post in posts %}
@@ -17,9 +17,10 @@
     <p>{{ post.text|linebreaksbr|truncatewords:75 }}<a href="{% url 'post_detail' pk=post.pk %}"><small> view post</small></a></p>
     <div id='signoff' class="date">
       {{ post.published_date }}
-      by <a id="viewuser"><b>{{ post.author }}</b></a><br>
-      author variable = {{post.author.pk}}
-      <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+      by <a href="./profile/?q= {{ post.author.pk }}" id="viewuser"><b>{{ post.author }}</b></button><br>
+      <button class="text-danger" href="">{{ post.likes.count }} <span class="glyphicon glyphicon-heart"></span> </button>
+      <a class="text-success" href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+
     </div>
 
   </div>
