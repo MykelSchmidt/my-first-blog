@@ -5,7 +5,7 @@
 
 <div class="col-md-6">
   <h1>Create your post<small> // connect with the world</small></h1>
-  <form method="POST" class="post-form">
+  <form method="POST" class="post-form" action='' enctype='multipart/form-data'>
     {% csrf_token %} {{ form.as_p }}
 
     <button type="submit" class="save btn btn-success">I want to post this.</button>
