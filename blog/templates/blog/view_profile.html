@@ -22,6 +22,9 @@
 <div class="post singlepost">
   <div class="col-md-6"> <!-- LEFT COLUMN -->
     <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+    {% if post.image %}
+  <img src='{{post.image.url}}' class='img-thumbnail'/>
+  {% endif %}
     <p>{{ post.text|linebreaksbr|truncatewords:75 }}<a href="{% url 'post_detail' pk=post.pk %}"><small> view post</small></a></p>
     <div id='signoff' class="date">
       {{ post.published_date }}
