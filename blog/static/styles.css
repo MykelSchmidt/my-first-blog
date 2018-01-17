@@ -1,7 +1,19 @@
+#searchform{
+     background-color:transparent !important;
+     border:none !important;
+}
+
+#redheart{
+}
+
+.post h1 #social{
+  float: right !important;
+}
+
 .singlepost{
   text-align: justify;
   background-color: white;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .page-header{
@@ -37,6 +49,14 @@ h1 {
   font-family: "Roboto";
   font-weight: ;
   font-size: 25px;
+}
+
+.createList{
+  font-size: 14px;
+}
+
+.removeGoals{
+  font-size: 14px;
 }
 
 

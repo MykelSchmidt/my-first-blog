@@ -14,13 +14,13 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('author', 'text',)
+        fields = ('text',)
 
 class LikeForm(forms.ModelForm):
 
     class Meta:
         model = Like
-        fields = ('author',)
+        fields = ()
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)

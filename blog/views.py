@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils import timezone
-from .models import Post
+from .models import Post, Comment, Like
 from .forms import PostForm
 from django.shortcuts import render, get_object_or_404
 from rest_framework.views import APIView
@@ -12,6 +12,8 @@ from .forms import PostForm, CommentForm, UserForm, LikeForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 #from urllib import quote_plus
 
 # Create your views here.
@@ -29,20 +31,42 @@ def view_profile(request):
 #    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 #    return render(request, 'blog/post_list.html', {'posts': posts})
 
-# I followed the djangogirls tutorial
+# I followed the djangogirls tutorial #perhaps change title to text?
 def post_list(request):
     try:
         query = request.GET.get("q")
         print(query+"cookies")
-        posts = Post.objects.filter(title__contains=query).order_by('-published_date')
+        a = Post.objects.filter(text__contains=query).order_by('-published_date')
+        b = Post.objects.filter(title__contains=query).order_by('-published_date')
+        titletext = []
+        if len(a) > 0:
+            for ai in a:
+                for bi in b:
+                    if bi not in titletext:
+                        titletext.append(bi)
+                if ai not in titletext:
+                    titletext.append(ai)
+            posts = titletext
+        elif len(b) > 0:
+            for bi in b:
+                for ai in a:
+                    if ai not in titletext:
+                        titletext.append(ai)
+                if bi not in titletext:
+                    titletext.append(bi)
+            posts = titletext
+        else:
+            posts = titletext
     except Exception as e:
         posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    return render(request, 'blog/post_list.html', {'posts': posts}, {'query': query})
+    #return render(request, 'blog/post_list.html', {'posts': posts})
 
+@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES or None, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -53,12 +77,14 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
+@login_required
 def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    return redirect('post_list')
 
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES or None)
@@ -78,7 +104,7 @@ def post_detail(request, pk):
     #share_string = quote_plus(post.text)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-
+@login_required
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -86,28 +112,40 @@ def add_comment_to_post(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.author = request.user
             comment.save()
-            #return redirect('post_detail', pk=post.pk)
-            return render(request, 'blog/post_detail.html', {'post': post})
+            return redirect('post_detail', pk=post.pk)
+            #return render(request, 'blog/post_detail.html', {'post': post})
     else:
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form})
 
+@login_required
 def add_like_to_post(request, pk):
+    origin = request.GET.get("origin")
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = LikeForm(request.POST)
         if form.is_valid():
-            like = form.save(commit=False)
-            like.post = post
-            like.save()
-            return True
-            #return redirect('post_detail', pk=post.pk)
-            #return render(request, 'blog/post_detail.html', {'post': post})
+            if Like.objects.filter(post=pk, author=request.user).exists():
+                dislike = Like.objects.filter(post=pk, author=request.user)
+                dislike.delete()
+                #return True
+                #return redirect('post_detail', pk=post.pk)
+                return redirect(origin)
+
+            else:
+                like = form.save(commit=False)
+                like.post = post
+                like.author = request.user
+                like.save()
+                #return True
+                return redirect(origin)
+                #return redirect('post_detail', pk=post.pk)
+                #return render(request, 'blog/post_detail.html', {'post': post})
     else:
-        form = CommentForm()
-    return True
-    #return render(request, 'blog/add_comment_to_post.html', {'form': form})
+        form = LikeForm()
+    return render(request, 'blog/add_like_to_post.html', {'form': form})
 
 def create_account(request):
     if request.method == "POST":

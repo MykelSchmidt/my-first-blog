@@ -2,7 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
@@ -22,7 +21,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
-    author = models.CharField(max_length=200)
+    author = models.ForeignKey('auth.User')
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     #approved_comment = models.BooleanField(default=False)
@@ -37,7 +36,9 @@ class Comment(models.Model):
 
 class Like(models.Model):
     post = models.ForeignKey('blog.Post', related_name='likes')
-    author = models.CharField(max_length=200)
+    author = models.ForeignKey('auth.User')
+    created_date = models.DateTimeField(default=timezone.now)
+
 
     def __str__(self):
         return self.text

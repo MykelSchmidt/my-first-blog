@@ -34,6 +34,7 @@
           <ul class="nav navbar-nav">
             <li><a><span class="appearingTextCreator">click to view Homepage!</span></a></li>
             {% if user.is_authenticated %}
+            <li><a href="../../profile/?q={{ user.id }}" id="viewuser" class="removeGoals"><span class="text-primary">My Profile</a></span><li>
             <li><a href="{% url 'post_new' %}" class="createList"><img class="createListImage" src="{% static 'images\plus2.png' %} " height="19px">
               <span class="text-success">Create post</span></a></li>
             {% endif %}
@@ -41,13 +42,13 @@
               <span class="text-danger">Delete all goals</span></a></li>-->
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <!-- Search posts -->
+            <!-- Search posts
             <form method="GET" class="navbar-form navbar-left" role="search" action=''>
               <div class="form-group">
                 <input type="text" name="q" class="form-control" placeholder="Search posts">
               </div>
               <button type="submit" class="btn btn-default" value="Search">Submit</button>
-            </form>
+            </form>-->
             <!-- -->
             <li><a href="/posts">API</a></li>
             {% if user.is_authenticated %}
@@ -64,6 +65,7 @@
     </nav>
     <!-- MAIN CONTENT -->
     <div class="main-bg"></div>
+
     <!-- OUTPUT -->
     <div id="outputSquare2" class="col-md-12">
       <div class="outputSquare">

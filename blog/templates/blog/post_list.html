@@ -2,13 +2,22 @@
 
 
   {% if user.is_authenticated %}
-  <h1 class="page-header hoverHeader"> Hey <span class="text-warning">{{ user.username }}</span>, start sharing with the world!</h1>
+  <h1 class="page-header hoverHeader"> Hey <span class="text-warning">{{ user.username }}</span>, read below the posts!</h1>
   {% else %}
   <h1 class="page-header hoverHeader">Check out these stories from people around the world!</h1>
   {% endif %}
 
+  <form method="GET" class="input-group" role="search" action=''>
+    <div id="searchform" class="form-group">
+      <input type="text" name="q" class="form-control" placeholder="Search post">
+    </div>
+  <span class="input-group-btn">
+    <button type="submit" class="btn btn-default" value="Search">Search</button>
+  </span>
+  </form>
+
    {% for post in posts %}
-<div class="post singlepost">
+   <div class="post singlepost">
   <div class="col-md-6"> <!-- LEFT COLUMN -->
     <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
     {% if post.image %}
@@ -17,8 +26,8 @@
     <p>{{ post.text|linebreaksbr|truncatewords:75 }}<a href="{% url 'post_detail' pk=post.pk %}"><small> view post</small></a></p>
     <div id='signoff' class="date">
       {{ post.published_date }}
-      by <a href="./profile/?q= {{ post.author.pk }}" id="viewuser"><b>{{ post.author }}</b></button><br>
-      <button class="text-danger" href="">{{ post.likes.count }} <span class="glyphicon glyphicon-heart"></span> </button>
+      by <a href="./profile/?q={{ post.author.pk }}" id="viewuser"><b>{{ post.author }}</b></a><br>
+      <a href="{% url 'add_like_to_post' pk=post.pk %}?origin={{request.path}}"><button class="text-danger">{{ post.likes.count }} <span class="glyphicon glyphicon-heart"></span> </button></a>
       <a class="text-success" href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
 
     </div>

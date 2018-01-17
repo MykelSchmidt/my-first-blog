@@ -9,6 +9,11 @@
   {% else %}
   <h1 class="page-header hoverHeader">Check out these stories from people around the world! </h1>
   {% endif %}-->
+
+  {% if not posts %}
+  <center><h1>This user has no posts yet.</h1></center>
+  {% endif %}
+
   {% for post in posts|slice:":1" %}
   <center><h1>Welcome to the posts of <span class="text-warning">{{ post.author }}</span>!</h1></center>
   {% endfor %}
@@ -20,10 +25,9 @@
     <p>{{ post.text|linebreaksbr|truncatewords:75 }}<a href="{% url 'post_detail' pk=post.pk %}"><small> view post</small></a></p>
     <div id='signoff' class="date">
       {{ post.published_date }}
-      by <a id="viewuser"><b>{{ post.author }}</b></a><br>
-      <button class="text-danger" href="">{{ post.likes.count }} <span class="glyphicon glyphicon-heart"></span> </button>
-
-      <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+      by <a href="../../profile/?q={{ post.author.pk }}" id="viewuser"><b>{{ post.author }}</b></a><br>
+<a href="{% url 'add_like_to_post' pk=post.pk %}?origin={{request.build_absolute_uri}}"><button class="text-danger">{{ post.likes.count }} <span class="glyphicon glyphicon-heart"></span> </button></a>
+      <a class="text-success" href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
     </div>
 
   </div>

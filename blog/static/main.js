@@ -1,8 +1,10 @@
 $(document).ready(() => {
 
+  /* add_like_to_post */
+
   /* outputSquare Hover */
   jQuery(document).ready(function($) {
-    $('.outputSquare').fadeIn(1000, "swing");
+    $('.outputSquare').fadeIn(250, "swing");
   })
 
   /* outputSquare Hover */
@@ -13,7 +15,7 @@ $(document).ready(() => {
   })
   $(document).on('mouseleave', '.singlepost', event => {
     $(event.currentTarget).closest('.singlepost').animate({
-      'opacity': '0.70'
+      'opacity': '0.85'
     }, 100);
   })
 
@@ -26,7 +28,7 @@ $(document).ready(() => {
   /* Animated Nav Link */
   $('.createList').on('mouseenter', () => {
     $('.createList').animate({
-      fontSize: '15px'
+      fontSize: '14.3px'
     }, 200);
   })
   $('.createList').on('mouseleave', () => {
@@ -47,7 +49,7 @@ $(document).ready(() => {
   /* Animated Nav Link */
   $('.removeGoals').on('mouseenter', () => {
     $('.removeGoals').animate({
-      fontSize: '15px'
+      fontSize: '14.3px'
     }, 200);
   })
   $('.removeGoals').on('mouseleave', () => {
@@ -129,4 +131,8 @@ $(document).ready(() => {
     $(event.currentTarget).remove(); /* Remove checkmark-icon */
   })
 
+  jQuery(document).ready(function($) {
+    document.getElementById("likeForm").submit();
+
+    })
 });
